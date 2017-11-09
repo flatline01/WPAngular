@@ -7,7 +7,10 @@ remove_action('admin_print_scripts', 'print_emoji_detection_script' );
 remove_action('admin_print_styles', 'print_emoji_styles' );
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'rsd_link');
+remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 add_filter('emoji_svg_url', '__return_false');
+remove_action( 'wp_head','wp_oembed_add_discovery_links');
+remove_action('wp_head', 'rest_output_link_wp_head', 10);
 
 function my_deregister_scripts(){wp_deregister_script( 'wp-embed' );}
 add_action( 'wp_footer', 'my_deregister_scripts' );
@@ -15,7 +18,7 @@ add_action( 'wp_footer', 'my_deregister_scripts' );
 function remove_generator() {return '';}
 add_filter('the_generator', 'remove_generator');
 
-//* Adding DNS Prefetching for google stuff
+//* Adding DNS Prefetching for CDN stuff
 function stb_dns_prefetch() {
 	echo '<meta http-equiv="x-dns-prefetch-control" content="on">
 	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
