@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <main>
 	<div class="container">
-		<content id="maincontent" ng-bind-html="divHtmlVar"></content>
+		<div id="maincontent" class="maincontent"></div>
 	</div>
 </main>
 <?php get_footer(); ?>
